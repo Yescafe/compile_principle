@@ -1,0 +1,7 @@
+int a;
+read(a);
+if (a >= 0) {
+  write(a);
+} else {  /* a less than 0 */
+  write(-a);
+}

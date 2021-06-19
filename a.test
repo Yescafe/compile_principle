@@ -1,0 +1,7 @@
+int a;
+int b;
+int ans;
+read a;
+read b;
+ans = a + b;
+write ans;
