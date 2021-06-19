@@ -1,0 +1,13 @@
+# execuable files
+a.out
+word_analysis
+syntax_parser
+
+# VSCode configurations
+.vscode
+
+# IDEA configurations
+.idea
+
+# macOS finder metadata
+.DS_Store
