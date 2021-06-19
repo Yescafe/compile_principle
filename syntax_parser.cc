@@ -101,7 +101,7 @@ void statement() {
   } else if (sym == Symbol::lcp) {
     compound_stat();
   } else if (sym != Symbol::eof) {
-    expression();
+    expression_stat();
   }
 }
 
@@ -176,14 +176,20 @@ void expression_stat() {
   }
   expect(Symbol::semi);
 }
+
 void expression() {
   info("expression");
   if (sym == Symbol::lrp || sym == Symbol::number) {
     bool_expr();
   } else {
-    expect(Symbol::ident);
-    expect(Symbol::assign);
-    additive_expr();
+    //! BUG HERE!! NOT LL(1)
+    if (sym == Symbol::assign) {
+      expect(Symbol::assign);
+      additive_expr();
+    } else {
+      bool_expr();
+    }
+
   }
 }
 
@@ -200,6 +206,7 @@ void additive_expr() {
   info("additive_expr");
   term();
   if (sym == Symbol::add || sym == Symbol::minus) {
+    nextsym();
     term();
   }
 }
